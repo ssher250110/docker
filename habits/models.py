@@ -11,7 +11,7 @@ NULLABLE = {'null': True, 'blank': True}
 
 class Habit(models.Model):
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Создатель привычки',
-                             help_text='Укажите создателя привычки')
+                              help_text='Укажите создателя привычки')
     location = models.CharField(max_length=100, **NULLABLE, verbose_name='Место выполнения привычки',
                                 help_text='Укажите место выполнения привычки')
     time = models.TimeField(verbose_name='Время выполнения привычки', help_text='Укажите время выполнения привычки')
@@ -25,9 +25,8 @@ class Habit(models.Model):
                                               help_text='Укажите периодичность выполнения привычки')
     award = models.CharField(max_length=150, **NULLABLE, verbose_name='Вознаграждение',
                              help_text='Укажите вознаграждение')
-    duration = models.DurationField(validators=[MaxValueValidator(timedelta(seconds=120))],
-                                    verbose_name='Время на выполнение привычки',
-                                    help_text='Укажите время на выполнение привычки')
+    time_complete = models.PositiveIntegerField(default=1, verbose_name='Время на выполнение привычки',
+                                           help_text='Укажите время на выполнение привычки')
     is_publication = models.BooleanField(default=False, verbose_name='Признак публикации',
                                          help_text='Укажите признак публикации')
 
