@@ -11,6 +11,8 @@ class User(AbstractUser):
     country = models.CharField(max_length=85, **NULLABLE, verbose_name='Страна', help_text='Введите название страны')
     avatar = models.ImageField(upload_to='users/avatar', **NULLABLE, verbose_name='Аватар',
                                help_text='Загрузите аватар')
+    tg_id = models.CharField(max_length=50, **NULLABLE, verbose_name='id телеграм чата',
+                             help_text='Укажите id телеграм чата')
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
