@@ -14,8 +14,8 @@ class Habit(models.Model):
     is_pleasant_habit = models.BooleanField(default=False, verbose_name='Приятная привычка',
                                             help_text='Укажите, приятная ли привычка')
     related_habit = models.ForeignKey('self', on_delete=models.SET_NULL, **NULLABLE,
-                                      verbose_name='Связанная полезная привычка',
-                                      help_text='Укажите связанную полезную привычку')
+                                      verbose_name='Связанная привычка',
+                                      help_text='Укажите связанную привычку')
     periodicity = models.PositiveIntegerField(default=1, verbose_name='Периодичность выполнения привычки',
                                               help_text='Укажите периодичность выполнения привычки')
     award = models.CharField(max_length=150, **NULLABLE, verbose_name='Вознаграждение',
