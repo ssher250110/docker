@@ -36,7 +36,6 @@ class HabitDestroyAPIView(DestroyAPIView):
     serializer_class = HabitSerializer
 
 
-
 class PublicHabitListAPIView(ListAPIView):
     queryset = Habit.objects.filter(is_publication=True)
     serializer_class = HabitSerializer
