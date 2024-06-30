@@ -26,7 +26,7 @@ class Habit(models.Model):
     award = models.CharField(max_length=150, **NULLABLE, verbose_name='Вознаграждение',
                              help_text='Укажите вознаграждение')
     time_complete = models.PositiveIntegerField(default=1, verbose_name='Время на выполнение привычки',
-                                           help_text='Укажите время на выполнение привычки')
+                                                help_text='Укажите время на выполнение привычки')
     is_publication = models.BooleanField(default=False, verbose_name='Признак публикации',
                                          help_text='Укажите признак публикации')
 
