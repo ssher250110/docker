@@ -7,11 +7,13 @@ from habits.serializers import HabitSerializer
 
 
 class HabitCreateAPIView(CreateAPIView):
+    """Создание привычки"""
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
 
 
 class HabitListAPIView(ListAPIView):
+    """Просмотр списка пользовательских привычек"""
     serializer_class = HabitSerializer
 
     def get_queryset(self):
@@ -20,24 +22,28 @@ class HabitListAPIView(ListAPIView):
 
 
 class HabitRetrieveAPIView(RetrieveAPIView):
+    """Просмотр одной привычки"""
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
     permission_classes = [IsOwner]
 
 
 class HabitUpdateAPIView(UpdateAPIView):
+    """Обновление одной привычки"""
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
     permission_classes = [IsOwner]
 
 
 class HabitDestroyAPIView(DestroyAPIView):
+    """Удаление одной привычки"""
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
     permission_classes = [IsOwner]
 
 
 class PublicHabitListAPIView(ListAPIView):
+    """Просмотр списка публичных привычек"""
     queryset = Habit.objects.filter(is_publication=True)
     serializer_class = HabitSerializer
     permission_classes = [AllowAny]

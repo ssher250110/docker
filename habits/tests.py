@@ -7,6 +7,7 @@ from users.models import User
 
 
 class HabitTestCase(APITestCase):
+    """Тестирование модели привычки"""
 
     def setUp(self):
         self.user = User.objects.create(email="admin@admin.com")
@@ -18,6 +19,7 @@ class HabitTestCase(APITestCase):
         )
 
     def test_habit_retrieve(self):
+        """Тестирование просмотра одной привычки"""
         url = reverse("habits:habit-retrieve", args=(self.habit.pk,))
         response = self.client.get(url)
         data = response.json()
@@ -29,6 +31,7 @@ class HabitTestCase(APITestCase):
         )
 
     def test_habit_list(self):
+        """Тестирование просмотра списка привычек"""
         url = reverse("habits:habit-list")
         response = self.client.get(url)
         data = response.json()
@@ -63,6 +66,7 @@ class HabitTestCase(APITestCase):
         )
 
     def test_habit_create(self):
+        """Тестирование создания привычки"""
         url = reverse("habits:habit-create")
         data = {
             "owner": self.user.pk,
@@ -78,6 +82,7 @@ class HabitTestCase(APITestCase):
         )
 
     def test_habit_update(self):
+        """Тестирование обновления привычки"""
         url = reverse("habits:habit-update", args=(self.habit.pk,))
         data = {
             "time": "21:00",
@@ -93,6 +98,7 @@ class HabitTestCase(APITestCase):
         )
 
     def test_habit_delete(self):
+        """Тестирование удаления привычки"""
         url = reverse("habits:habit-destroy", args=(self.habit.pk,))
         response = self.client.delete(url)
         self.assertEqual(

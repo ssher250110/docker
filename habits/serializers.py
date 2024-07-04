@@ -6,6 +6,7 @@ from habits.validators import TimeCompleteHabitValidator, PeriodicityHabitValida
 
 
 class HabitSerializer(ModelSerializer):
+    """Сериализатор модели привычки"""
     class Meta:
         model = Habit
         fields = '__all__'

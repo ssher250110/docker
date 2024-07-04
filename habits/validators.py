@@ -2,6 +2,7 @@ from rest_framework.serializers import ValidationError
 
 
 class RelatedHabitValidator:
+    """Валидатор проверки поля связанной привычки"""
     def __init__(self, field):
         self.field = field
 
@@ -15,6 +16,7 @@ class RelatedHabitValidator:
 
 
 class AwardHabitValidator:
+    """Валидатор проверки поля вознаграждения"""
 
     def __init__(self, field):
         self.field = field
@@ -30,6 +32,7 @@ class AwardHabitValidator:
 
 
 class TimeCompleteHabitValidator:
+    """Валидатор проверки поля времени на выполнение привычки"""
 
     def __init__(self, field):
         self.field = field
@@ -41,6 +44,7 @@ class TimeCompleteHabitValidator:
 
 
 class PeriodicityHabitValidator:
+    """Валидатор проверки поля периодичности выполнения привычки"""
 
     def __init__(self, field):
         self.field = field
