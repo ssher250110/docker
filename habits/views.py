@@ -17,6 +17,7 @@ class HabitListAPIView(ListAPIView):
     serializer_class = HabitSerializer
 
     def get_queryset(self):
+        """Возвращает список привычек отфильтрованных по владельцу данных привычек"""
         user = self.request.user
         return Habit.objects.filter(owner=user)
 
