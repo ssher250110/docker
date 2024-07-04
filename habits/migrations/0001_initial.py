@@ -8,7 +8,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -20,16 +19,33 @@ class Migration(migrations.Migration):
             name='Habit',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('location', models.CharField(blank=True, help_text='Укажите место выполнения привычки', max_length=100, null=True, verbose_name='Место выполнения привычки')),
-                ('time', models.TimeField(help_text='Укажите время выполнения привычки', verbose_name='Время выполнения привычки')),
-                ('action', models.CharField(help_text='Укажите действие привычки', max_length=150, verbose_name='Действие привычки')),
-                ('is_pleasant_habit', models.BooleanField(default=False, help_text='Укажите, приятная ли привычка', verbose_name='Приятная привычка')),
-                ('periodicity', models.PositiveIntegerField(default=1, help_text='Укажите периодичность выполнения привычки', verbose_name='Периодичность выполнения привычки')),
-                ('award', models.CharField(blank=True, help_text='Укажите вознаграждение', max_length=150, null=True, verbose_name='Вознаграждение')),
-                ('duration', models.DurationField(help_text='Укажите время на выполнение привычки', validators=[django.core.validators.MaxValueValidator(datetime.timedelta(seconds=120))], verbose_name='Время на выполнение привычки')),
-                ('is_publication', models.BooleanField(default=False, help_text='Укажите признак публикации', verbose_name='Признак публикации')),
-                ('related_habit', models.ForeignKey(blank=True, help_text='Укажите связанную полезную привычку', null=True, on_delete=django.db.models.deletion.SET_NULL, to='habits.habit', verbose_name='Связанная полезная привычка')),
-                ('user', models.ForeignKey(help_text='Укажите создателя привычки', on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='Создатель привычки')),
+                ('location',
+                 models.CharField(blank=True, help_text='Укажите место выполнения привычки', max_length=100, null=True,
+                                  verbose_name='Место выполнения привычки')),
+                ('time', models.TimeField(help_text='Укажите время выполнения привычки',
+                                          verbose_name='Время выполнения привычки')),
+                ('action', models.CharField(help_text='Укажите действие привычки', max_length=150,
+                                            verbose_name='Действие привычки')),
+                ('is_pleasant_habit', models.BooleanField(default=False, help_text='Укажите, приятная ли привычка',
+                                                          verbose_name='Приятная привычка')),
+                ('periodicity',
+                 models.PositiveIntegerField(default=1, help_text='Укажите периодичность выполнения привычки',
+                                             verbose_name='Периодичность выполнения привычки')),
+                ('award', models.CharField(blank=True, help_text='Укажите вознаграждение', max_length=150, null=True,
+                                           verbose_name='Вознаграждение')),
+                ('duration', models.DurationField(help_text='Укажите время на выполнение привычки',
+                                                  validators=[django.core.validators.MaxValueValidator(
+                                                      datetime.timedelta(seconds=120))],
+                                                  verbose_name='Время на выполнение привычки')),
+                ('is_publication', models.BooleanField(default=False, help_text='Укажите признак публикации',
+                                                       verbose_name='Признак публикации')),
+                ('related_habit',
+                 models.ForeignKey(blank=True, help_text='Укажите связанную полезную привычку', null=True,
+                                   on_delete=django.db.models.deletion.SET_NULL, to='habits.habit',
+                                   verbose_name='Связанная полезная привычка')),
+                ('user',
+                 models.ForeignKey(help_text='Укажите создателя привычки', on_delete=django.db.models.deletion.CASCADE,
+                                   to=settings.AUTH_USER_MODEL, verbose_name='Создатель привычки')),
             ],
             options={
                 'verbose_name': 'Привычка',
