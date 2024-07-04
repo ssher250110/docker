@@ -10,6 +10,7 @@ class HabitTestCase(APITestCase):
     """Тестирование модели привычки"""
 
     def setUp(self):
+        """Тестовые данные для тестов"""
         self.user = User.objects.create(email="admin@admin.com")
         self.client.force_authenticate(user=self.user)
         self.habit = Habit.objects.create(
