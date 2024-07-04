@@ -93,3 +93,13 @@ class HabitTestCase(APITestCase):
         self.assertEqual(
             response.status_code, status.HTTP_200_OK
         )
+
+    def test_habit_delete(self):
+        url = reverse("habits:habit-destroy", args=(self.habit.pk,))
+        response = self.client.delete(url)
+        self.assertEqual(
+            Habit.objects.all().count(), 0
+        )
+        self.assertEqual(
+            response.status_code, status.HTTP_204_NO_CONTENT
+        )
