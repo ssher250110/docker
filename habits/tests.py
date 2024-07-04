@@ -79,3 +79,17 @@ class HabitTestCase(APITestCase):
             response.status_code, status.HTTP_201_CREATED
         )
 
+    def test_habit_update(self):
+        url = reverse("habits:habit-update", args=(self.habit.pk,))
+        data = {
+            "time": "21:00",
+            "action": "sleep"
+        }
+        response = self.client.patch(url, data)
+        data = response.json()
+        self.assertEqual(
+            data.get("action"), "sleep"
+        )
+        self.assertEqual(
+            response.status_code, status.HTTP_200_OK
+        )
