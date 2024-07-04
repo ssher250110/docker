@@ -1,3 +1,5 @@
+import time
+
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
@@ -26,4 +28,38 @@ class HabitTestCase(APITestCase):
         )
         self.assertEqual(
             data.get("action"), self.habit.action
+        )
+
+    def test_habit_list(self):
+        url = reverse("habits:habit-list")
+        response = self.client.get(url)
+        data = response.json()
+        self.assertEqual(
+            Habit.objects.all().count(), 1
+        )
+        result = {
+            "count": 1,
+            "next": None,
+            "previous": None,
+            "results": [
+                {
+                    "id": self.habit.pk,
+                    "owner": self.user.pk,
+                    "location": None,
+                    "time": self.habit.time + ":00",
+                    "action": self.habit.action,
+                    "is_pleasant_habit": False,
+                    "related_habit": None,
+                    "periodicity": 1,
+                    "award": None,
+                    "time_complete": 1,
+                    "is_publication": False,
+                }
+            ]
+        }
+        self.assertEqual(
+            data, result
+        )
+        self.assertEqual(
+            response.status_code, status.HTTP_200_OK
         )
