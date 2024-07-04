@@ -19,6 +19,9 @@ redis = "^5.0.7"
 celery = "^5.4.0"
 
 
+[tool.poetry.group.dev.dependencies]
+coverage = "^7.5.4"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
