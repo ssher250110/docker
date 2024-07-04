@@ -21,6 +21,7 @@ celery = "^5.4.0"
 
 [tool.poetry.group.dev.dependencies]
 coverage = "^7.5.4"
+flake8 = "^7.1.0"
 
 [build-system]
 requires = ["poetry-core"]
