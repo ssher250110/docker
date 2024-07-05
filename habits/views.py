@@ -4,6 +4,7 @@ from rest_framework.permissions import AllowAny
 from habits.models import Habit
 from habits.permissions import IsOwner
 from habits.serializers import HabitSerializer
+from habits.services import set_scheduler_periodicity_reminder_habit
 
 
 class HabitCreateAPIView(CreateAPIView):
@@ -15,6 +16,7 @@ class HabitCreateAPIView(CreateAPIView):
         habit = serializer.save()
         habit.owner = self.request.user
         habit.save()
+        set_scheduler_periodicity_reminder_habit(habit)
 
 
 class HabitListAPIView(ListAPIView):
