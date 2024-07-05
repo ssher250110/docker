@@ -11,6 +11,11 @@ class HabitCreateAPIView(CreateAPIView):
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
 
+    def perform_create(self, serializer):
+        habit = serializer.save()
+        habit.owner = self.request.user
+        habit.save()
+
 
 class HabitListAPIView(ListAPIView):
     """Просмотр списка пользовательских привычек"""
