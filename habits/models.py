@@ -6,7 +6,8 @@ NULLABLE = {'null': True, 'blank': True}
 
 class Habit(models.Model):
     """Модель привычки"""
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Создатель привычки',
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, **NULLABLE,
+                              verbose_name='Создатель привычки',
                               help_text='Укажите создателя привычки')
     location = models.CharField(max_length=100, **NULLABLE, verbose_name='Место выполнения привычки',
                                 help_text='Укажите место выполнения привычки')
