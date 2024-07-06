@@ -20,7 +20,11 @@
 2. В файле .env_example подставьте свои переменные окружения и переименуйте файл в .env
 3. Запустите Docker
 4. Введите команду в терминале(выполнение команды осуществляется из папки проекта):
-
-```bash
-docker-compose up -d --build 
-```
+    * Для Compose V1:
+    ```bash
+    docker-compose up -d --build 
+    ```
+    * Для Compose V2:
+    ```bash
+    docker compose up -d --build 
+    ```
