@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "course-work-drf"
+name = "course-work-docker"
 version = "0.1.0"
 description = ""
 authors = ["ssher <ssher250110@yandex.ru>"]
